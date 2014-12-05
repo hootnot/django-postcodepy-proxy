@@ -85,6 +85,7 @@ Alter project settings
 Edit the pcp/settings.py and add the apps
 
       INSTALLED_APPS = (
+        ...
         'postcodepy_proxy',
         'pcproxy',
       )

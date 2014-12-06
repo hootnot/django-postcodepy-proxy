@@ -10,7 +10,7 @@ Sample backend-app
 
      $ django-admin startproject pcp
      $ cd pcp
-     $ django startapp pcproxy
+     $ django-admin startapp pcproxy
      $ cd pcproxy
 
 Add views to the views.py

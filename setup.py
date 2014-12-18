@@ -12,7 +12,7 @@ requirements = map(str.strip, open("requirements.txt").readlines())
 
 setup(
     name = "django-postcodepy-proxy",
-    version = "0.0.1",
+    version = "0.0.2",
     author = "Feite Brekeveld",
     author_email = "f.brekeveld@gmail.com",
     description = ("simple Django app to make your backend serve as a proxy for postcode.nl REST-API"),

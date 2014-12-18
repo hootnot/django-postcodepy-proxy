@@ -18,3 +18,10 @@ class PostcodepyProxyView(View):
    retValue = api.get_postcodedata( *pcat )
    return retValue
 
+class SignalProxyView(View):
+  def get(self, request, sar, *args, **kwargs):
+
+   api = postcodepy.API( environment='live', access_key=USER_SETTINGS['AUTH']['API_ACCESS_KEY'], access_secret=USER_SETTINGS['AUTH']['API_ACCESS_SECRET'])
+   retValue = api.get_signalcheck( sar )
+   return retValue
+

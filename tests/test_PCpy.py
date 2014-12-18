@@ -1,11 +1,15 @@
 import unittest
 
 from postcodepy_proxy.views import PostcodepyProxyView
+from postcodepy_proxy.views import SignalProxyView
+from postcodepy_proxy.signalapi import SignalRequestData
 from postcodepy import postcodepy
 
 import os, sys
 from django.test import Client, RequestFactory
 from django.conf import settings
+from django.http import HttpResponse
+import json
 
 
 access_key = None
@@ -67,6 +71,35 @@ class PostcodepyProxyViewTestCase(unittest.TestCase):
       caught_exception = cm.exception
       expected_exception = postcodepy.PostcodeError("ERRHouseNumberAdditionInvalid")
       self.assertEqual( expected_exception.exceptionId, caught_exception.exceptionId)
+
+
+  def test_context_data_SignalCheckCustomer(self):
+    """ TEST: execute proxy view to get data signaldata, request should return JSON with 1 warning, 7 signals
+    """
+    # The sar (Signal-Api-Request)
+    sarArgs = {
+        "customer_email": "test-address@postcode.nl",
+        "customer_phoneNumber": "+31235325689",
+        "customer_address_postcode": "2012ES",
+        "customer_address_houseNumber": "30",
+        "customer_address_country": "NL",
+        "transaction_internalId": "MyID-249084",
+        "transaction_deliveryAddress_postcode": "7514BP",
+        "transaction_deliveryAddress_houseNumber": "129",
+        "transaction_deliveryAddress_houseNumberAddition": "B",
+        "transaction_deliveryAddress_country": "NL"
+        }
+    sar = SignalRequestData(sarArgs)
+    sar = sar()
+    request = RequestFactory().get('/fake-path')
+    view = SignalProxyView.as_view()
+    response = view(request, sar=sar)
+    #print >>sys.stderr, response
+    self.assertEqual( { "warningCount" : response['warningCount'],
+                        "lenOfSignalArray" : len(response['signals']), }, 
+                      { "warningCount" : 1,
+                       "lenOfSignalArray" : 7 } )
+
 
 
 

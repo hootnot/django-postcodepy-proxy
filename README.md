@@ -1,11 +1,16 @@
 Django Postcode Proxy
 =========================
 
+[![PyPI version](https://badge.fury.io/py/django-postcodepy-proxy.svg)](http://badge.fury.io/py/django-postcodepy-proxy)
+
+
 Simple proxy class to integrate Dutch 'postcode/huisnr' address verification in your Django application.
 This is done using the postcode.nl REST-API at [https://api.postcode.nl](https://api.postcode.nl). For documentation
 regarding API endpoints also check this url.
 
 The API also provides an endpoint for information validation, enrichment and fraude risk check. See docs for details.
+
+---
 
 Install
 =========

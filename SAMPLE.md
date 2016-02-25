@@ -26,23 +26,23 @@ Edit the file: views.py and add the HTML and JSON views
      from postcodepy.postcodepy import PostcodeError
 
      class PCDemoHTMLView( PostcodepyProxyView ):
-       template_name = "postcodeproxy.html"
+         template_name = "postcodeproxy.html"
 
-       def get(self, request, *args, **kwargs):
-         rv = super(PCDemoHTMLView, self).get(request, *args, **kwargs)
-         return render(request, self.template_name, rv)
+         def get(self, request, *args, **kwargs):
+             rv = super(PCDemoHTMLView, self).get(request, *args, **kwargs)
+             return render(request, self.template_name, rv)
 
 
      class PCDemoJSONView( PostcodepyProxyView ):
-       def get(self, request, *args, **kwargs):
-         rv = None
-         try:
-           rv = super(PCDemoJSONView, self).get(request, *args, **kwargs)
-         except PostcodeError, e:
-           # Pass the exceptioninformation as response data
-           rv = e.response_data
+         def get(self, request, *args, **kwargs):
+             rv = None
+             try:
+                 rv = super(PCDemoJSONView, self).get(request, *args, **kwargs)
+             except PostcodeError, e:
+                 # Pass the exceptioninformation as response data
+                 rv = e.response_data
 
-         return HttpResponse( json.dumps(rv), content_type="application/json")
+             return HttpResponse( json.dumps(rv), content_type="application/json")
 
 
 Add a HTML template
@@ -65,7 +65,7 @@ Routes for the requests
 
 Create the file: urls.py
 
-      from django.conf.urls import patterns, include, url
+      from django.conf.urls import patterns, url
       from django.contrib import admin
 
       from pcproxy import views

@@ -1,6 +1,7 @@
 Django Postcode Proxy
 =========================
 
+[![Documentation Status](https://readthedocs.org/projects/django-postcodepy-proxy/badge/?version=latest)](http://django-postcodepy-proxy.readthedocs.org/en/latest/?badge=latest)
 [![PyPI version](https://badge.fury.io/py/django-postcodepy-proxy.svg)](http://badge.fury.io/py/django-postcodepy-proxy)
 [![PyPI](https://img.shields.io/pypi/dm/django-postcodepy-proxy.svg)]()
 [![Code Health](https://landscape.io/github/hootnot/django-postcodepy-proxy/master/landscape.svg?style=flat)](https://landscape.io/github/hootnot/django-postcodepy-proxy/master)

@@ -106,11 +106,21 @@ Create the ``pcproxy/urls.py`` file and add url's to route the requests.
       from pcproxy import views
 
       urlpatterns = [
-          url(r'^postcode/(?P<postcode>[\d]{4}[a-zA-Z]{2})/(?P<houseNumber>[\d]+)/$', views.PCDemoHTMLView.as_view() ),
-          url(r'^postcode/(?P<postcode>[\d]{4}[a-zA-Z]{2})/(?P<houseNumber>[\d]+)/(?P<houseNumberAddition>[\dA-Za-z]+)/$', views.PCDemoHTMLView.as_view() ),
+          url(r'^postcode/(?P<postcode>[\d]{4}[a-zA-Z]{2})/'
+               '(?P<houseNumber>[\d]+)/$',
+               views.PCDemoHTMLView.as_view() ),
+          url(r'^postcode/(?P<postcode>[\d]{4}[a-zA-Z]{2})/'
+               '(?P<houseNumber>[\d]+)/'
+               '(?P<houseNumberAddition>[\dA-Za-z]+)/$',
+               views.PCDemoHTMLView.as_view() ),
       
-          url(r'^jsonpostcode/(?P<postcode>[\d]{4}[a-zA-Z]{2})/(?P<houseNumber>[\d]+)/$', views.PCDemoJSONView.as_view() ),
-          url(r'^jsonpostcode/(?P<postcode>[\d]{4}[a-zA-Z]{2})/(?P<houseNumber>[\d]+)/(?P<houseNumberAddition>[\dA-Za-z]+)/$', views.PCDemoJSONView.as_view() ),
+          url(r'^jsonpostcode/(?P<postcode>[\d]{4}[a-zA-Z]{2})/'
+               '(?P<houseNumber>[\d]+)/$',
+               views.PCDemoJSONView.as_view() ),
+          url(r'^jsonpostcode/(?P<postcode>[\d]{4}[a-zA-Z]{2})/'
+               '(?P<houseNumber>[\d]+)/'
+               '(?P<houseNumberAddition>[\dA-Za-z]+)/$',
+               views.PCDemoJSONView.as_view() ),
       ]
 
 

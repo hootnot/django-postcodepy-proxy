@@ -6,7 +6,6 @@
 |_|                             |_| |___|_____|_|             |___|
 
 """
-__all__ = ["PostcodeProxyView", "SignalProxyView", "SignalRequestData"]
 
 __title__ = "Django Postcode Proxy for the REST API of Postcode.nl"
 __version__ = "1.0.0"
@@ -15,4 +14,4 @@ __license__ = "MIT"
 __copyright__ = "Copyright 2014-2016 Feite Brekeveld"
 
 # Version synonym
-VERSION = __version_
+VERSION = __version__

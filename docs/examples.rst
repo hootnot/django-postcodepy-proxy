@@ -52,7 +52,7 @@ Edit the file: pcproxy/views.py and add the HTML and JSON views.
                 # Pass the exceptioninformation as response data
                 rv = e.response_data
 
-        return render(request, self.template_name, rv)
+            return render(request, self.template_name, rv)
     
     
     class PCDemoJSONView(PostcodepyProxyView):

@@ -67,7 +67,7 @@ class SignalRequestData(object):
             self.__delim = delimiter
 
         if _d:
-            [self._transform({k: v}) for (k, v) in _d.items()]
+            for (k, v) in _d.items(): self._transform({k: v})
 
     def _updateItem(self, _dict, keyList, value):
         """_updateItem - private method to construct the dictionary.

@@ -119,7 +119,7 @@ class SignalRequestData(object):
         """call - return the generated dictionary."""
         return self.__structDict
 
-if __name__ == "__main__":
+if __name__ == "__main__":    # pragma: no cover
     import json
     sarArgs = {
             "customer_email": "test-address@postcode.nl",

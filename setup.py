@@ -1,12 +1,27 @@
 """setup."""
 import os
+import sys
 import re
 from setuptools import setup
+from setuptools.command.test import test as TestCommand
 
 # Utility function to read the README file.
 # Used for the long_description.  It's nice, because now 1) we have a top level
 # README file and 2) it's easier to type in the README file than to put a raw
 # string in below ...
+
+# This command has been borrowed from
+# https://github.com/getsentry/sentry/blob/master/setup.py
+class PyTest(TestCommand):
+    def finalize_options(self):
+        TestCommand.finalize_options(self)
+        self.test_args = ['tests']
+        self.test_suite = True
+
+    def run_tests(self):
+        import pytest
+        errno = pytest.main(self.test_args)
+        sys.exit(errno)
 
 
 def read(fname):
@@ -45,5 +60,5 @@ setup(
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3.4',
     ],
-    test_suite="tests",
+    cmdclass={'test': PyTest},
 )

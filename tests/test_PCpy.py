@@ -24,9 +24,9 @@ class TestUM(unittest.TestCase):
         global access_secret
         access_secret = os.getenv("ACCESS_SECRET")
         if not (access_key and access_secret):
-            print "provide an access key and secret via environment:"
-            print "export ACCESS_KEY=..."
-            print "export ACCESS_SECRET=..."
+            print("provide an access key and secret via environment:")
+            print("export ACCESS_KEY=...")
+            print("export ACCESS_SECRET=...")
             self.skipTest(self)
 
 
@@ -82,7 +82,7 @@ class PostcodepyProxyViewTestCase(unittest.TestCase):
         view = PostcodepyProxyView.as_view()
         with self.assertRaises(postcodepy.PostcodeError) as cm:
             response = view(request, **requestArgs)
-            print >>sys.stderr, "ERR", response
+            # print >>sys.stderr, "ERR", response
             caught_exc = cm.exception
             # expected exception
             exp_exc = postcodepy.PostcodeError("ERRHouseNumberAdditionInvalid")
@@ -90,7 +90,7 @@ class PostcodepyProxyViewTestCase(unittest.TestCase):
 
     def test_context_data_SignalCheckCustomer(self):
         """TEST: execute proxy view to get data signaldata, request should
-        return JSON with 1 warning, 7 signals
+        return JSON with 1 warning, 5 signals
         """
         # The sar (Signal-Api-Request)
         sarArgs = {
@@ -114,7 +114,7 @@ class PostcodepyProxyViewTestCase(unittest.TestCase):
         self.assertEqual({"warningCount": response['warningCount'],
                           "lenOfSignalArray": len(response['signals'])},
                          {"warningCount": 1,
-                          "lenOfSignalArray": 7})
+                          "lenOfSignalArray": 5})
 
 
 if __name__ == "__main__":

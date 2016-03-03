@@ -24,9 +24,9 @@ class TestUM(unittest.TestCase):
         global access_secret
         access_secret = os.getenv("ACCESS_SECRET")
         if not (access_key and access_secret):
-            print "provide an access key and secret via environment:"
-            print "export ACCESS_KEY=..."
-            print "export ACCESS_SECRET=..."
+            print("provide an access key and secret via environment:")
+            print("export ACCESS_KEY=...")
+            print("export ACCESS_SECRET=...")
             self.skipTest(self)
 
 
@@ -82,7 +82,7 @@ class PostcodepyProxyViewTestCase(unittest.TestCase):
         view = PostcodepyProxyView.as_view()
         with self.assertRaises(postcodepy.PostcodeError) as cm:
             response = view(request, **requestArgs)
-            print >>sys.stderr, "ERR", response
+            # print >>sys.stderr, "ERR", response
             caught_exc = cm.exception
             # expected exception
             exp_exc = postcodepy.PostcodeError("ERRHouseNumberAdditionInvalid")

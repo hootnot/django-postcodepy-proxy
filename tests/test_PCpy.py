@@ -90,7 +90,7 @@ class PostcodepyProxyViewTestCase(unittest.TestCase):
 
     def test_context_data_SignalCheckCustomer(self):
         """TEST: execute proxy view to get data signaldata, request should
-        return JSON with 1 warning, 7 signals
+        return JSON with 1 warning, 5 signals
         """
         # The sar (Signal-Api-Request)
         sarArgs = {
@@ -114,7 +114,7 @@ class PostcodepyProxyViewTestCase(unittest.TestCase):
         self.assertEqual({"warningCount": response['warningCount'],
                           "lenOfSignalArray": len(response['signals'])},
                          {"warningCount": 1,
-                          "lenOfSignalArray": 7})
+                          "lenOfSignalArray": 5})
 
 
 if __name__ == "__main__":

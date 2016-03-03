@@ -116,7 +116,34 @@ class PostcodepyProxyViewTestCase(unittest.TestCase):
                          {"warningCount": 1,
                           "lenOfSignalArray": 5})
 
+    def test_context_data_SignalCheckCustomer_delim(self):
+        """TEST: execute proxy view to get data signaldata, request should
+        return JSON with 1 warning, 5 signals
+        """
+        # The sar (Signal-Api-Request)
+        sarArgs = {
+            "customer.email": "test-address@postcode.nl",
+            "customer.phoneNumber": "+31235325689",
+            "customer.address.postcode": "2012ES",
+            "customer.address.houseNumber": "30",
+            "customer.address.country": "NL",
+            "transaction.internalId": "MyID-249084",
+            "transaction.deliveryAddress.postcode": "7514BP",
+            "transaction.deliveryAddress.houseNumber": "129",
+            "transaction.deliveryAddress.houseNumberAddition": "B",
+            "transaction.deliveryAddress.country": "NL"
+            }
+        sar = SignalRequestData(sarArgs, delimiter=".")()
+        request = RequestFactory().get('/fake-path')
+        view = SignalProxyView.as_view()
+        response = view(request, sar=sar)
+        # print >>sys.stderr, response
+        self.assertEqual({"warningCount": response['warningCount'],
+                          "lenOfSignalArray": len(response['signals'])},
+                         {"warningCount": 1,
+                          "lenOfSignalArray": 5})
 
-if __name__ == "__main__":
+
+if __name__ == "__main__":    # pragma: no cover
 
     unittest.main()

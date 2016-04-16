@@ -18,6 +18,13 @@ Beside this documentation, the complete documentation of this software is availa
 [http://django-postcodepy-proxy.readthedocs.org](http://django-postcodepy-proxy.readthedocs.org/en/latest/?badge=latest).
 
 
+Supported versions of Python and Django :
+
+|                | **Py 2.7** | **Py 3.4** | **Py 3.5** |
+| :------------: | :--------: | :--------: | :--------: | 
+| **Django 1.8** | YES        | YES        | YES        |
+| **Django 1.9** | YES        | YES        | YES        |
+
 ---
 
 Install
